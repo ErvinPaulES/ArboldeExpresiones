@@ -4,7 +4,7 @@ import View from './View.js';
 class Main{
     constructor(){
         let view = new View(document.querySelector('#preorder'), document.querySelector('#posorder'));
-        document.querySelector('#agregar').addEventListener('click', () => {
+        document.querySelector('#calcular').addEventListener('click', () => {
                 let valores = new Array();
                 let operacion = document.querySelector('#operacion').value;
                 for(i=0;i<operacion.length;i++){
