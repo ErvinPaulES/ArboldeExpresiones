@@ -8,6 +8,7 @@ class Main{
 
                 let valores = new Array();
                 let operacion = document.querySelector('#operacion').value;
+                let resultado = document.querySelector('#resultado')
                 console.log(operacion);
                 
                 for(let i=0;i<operacion.length;i++){
@@ -25,6 +26,9 @@ class Main{
                     view.agregarComponente(componente);
                 }
                 view.crearArbol();
+                view.preOrder();
+                view.posOrder();
+                view.Calcular(resultado);
         })
     }
 }
