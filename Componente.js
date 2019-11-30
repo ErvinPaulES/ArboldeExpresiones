@@ -1,4 +1,4 @@
-export default class Componentes{
+export default class Componente{
     constructor(valor){
         this._valor = valor;
         this._izquierda = null;

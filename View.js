@@ -6,7 +6,9 @@ export default class View{
 
     }
     agregarComponente(componente){
-        this._Componentes.push(componente);
-        console.log(this._Componentes);     
+        this._Componentes.push(componente);  
+    }
+    crearArbol(){
+        
     }
 }
