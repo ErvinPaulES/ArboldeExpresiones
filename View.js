@@ -20,9 +20,9 @@ export default class View{
                 this._Componentes[i].izquierda = this._Componentes[i-1];
                 this._Componentes[i].derecha = this._Componentes[i+1];
                 console.log(this._Componentes);
-                
-                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
                 this._removeItemFromArr(this._Componentes, this._Componentes[i+1])
+                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
+                
             }
             
         }
@@ -31,8 +31,10 @@ export default class View{
             if(this._Componentes[i].valor === "+" || this._Componentes[i].valor === "-"){
                 this._Componentes[i].izquierda = this._Componentes[i-1];
                 this._Componentes[i].derecha = this._Componentes[i+1];
-                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
                 this._removeItemFromArr(this._Componentes, this._Componentes[i+1])
+                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
+                i--;
+                
             }
         }
         
