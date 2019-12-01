@@ -8,28 +8,36 @@ export default class View{
 
     }
     agregarComponente(componente){
-        this._Componentes.push(componente);  
+        this._Componentes.push(componente);
+        console.log(this._Componentes);
+          
     }
     crearArbol(){
         for(let i=0; i<this._Componentes.length; i++){
-            if(this._Componentes[i] === "/" || this._Componentes[i] === "*"){
+            console.log(this._Componentes);
+            
+            if(this._Componentes[i].valor === "/" || this._Componentes[i].valor === "*"){
                 this._Componentes[i].izquierda = this._Componentes[i-1];
                 this._Componentes[i].derecha = this._Componentes[i+1];
-                removeItemFromArr (this._Componentes, this._Componentes[i-1])
-                removeItemFromArr (this._Componentes, this._Componentes[i+1])
+                console.log(this._Componentes);
+                
+                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
+                this._removeItemFromArr(this._Componentes, this._Componentes[i+1])
             }
+            
         }
         for(let i=0; i<this._Componentes.length; i++){
-            if(this._Componentes[i] === "+" || this._Componentes[i] === "-"){
+            console.log(this._Componentes);
+            if(this._Componentes[i].valor === "+" || this._Componentes[i].valor === "-"){
                 this._Componentes[i].izquierda = this._Componentes[i-1];
                 this._Componentes[i].derecha = this._Componentes[i+1];
-                removeItemFromArr (this._Componentes, this._Componentes[i-1])
-                removeItemFromArr (this._Componentes, this._Componentes[i+1])
+                this._removeItemFromArr(this._Componentes, this._Componentes[i-1])
+                this._removeItemFromArr(this._Componentes, this._Componentes[i+1])
             }
         }
         
     }
-    removeItemFromArr ( arr, item ) {
+    _removeItemFromArr( arr, item ){
         var i = arr.indexOf( item );
      
         if ( i !== -1 ) {
@@ -37,22 +45,27 @@ export default class View{
         }
     }
     preOrder(){
-        _preOrder(this._Componentes[this._Componentes.length-1]);
+        this._preOrder(this._Componentes[this._Componentes.length-1]);
     }
     _preOrder(valor){
         this._preorder.innerHTML+= valor;
         this._Pila.push(valor);
         if(valor.izquierda!=null){
-            _preOrder(valor.izquierda)
+            this._preOrder(valor.izquierda)
         }else if(valor.derecha != null){
-            _preOrder(valor.derecha)
+            this._preOrder(valor.derecha)
         }
     }
     posOrder(){
+        this._posOrder(this._Componentes[this._Componentes.length-1]);
+        console.log(this._Componentes[this._Componentes.length-1]);
+        
+    }
+    _posOrder(valor){
         if(valor.izquierda!=null){
-            _preOrder(valor.izquierda)
+            this._posOrder(valor.izquierda)
         }else if(valor.derecha != null){
-            _preOrder(valor.derecha)
+            this._posOrder(valor.derecha)
         }
         this._posorder.innerHTML+= valor;
     }
